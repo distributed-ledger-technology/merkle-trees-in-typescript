@@ -1,4 +1,5 @@
-import { MerkleTree, Helper } from "https://deno.land/x/merkletrees/mod.ts"
+// import { MerkleTree, Helper } from "https://deno.land/x/merkletrees/mod.ts"
+import { MerkleTree, Helper } from "./mod.ts"
 
 const exampleArray = ["dog", "horse", "cow", "chicken"]
 
@@ -12,6 +13,4 @@ const isValid = merkleTree.verify(proof, investigatedEntryHashed, rootHash, exam
 
 if (isValid) {
     console.log(`we can be pretty sure that ${investigatedEntry} is in the array at index: ${exampleArray.indexOf(investigatedEntry)}`)
-} else {
-    console.log(`${investigatedEntry} is not in the array`)
 }

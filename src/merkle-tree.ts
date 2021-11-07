@@ -1,5 +1,6 @@
 import { Helper } from "./helper.ts";
 
+
 export interface IMerkleHashes {
     level: number,
     hashes: string[]
@@ -9,6 +10,7 @@ export class MerkleTree {
 
     private hashes: IMerkleHashes[] = []
 
+
     public constructor(array: any[]) {
 
         this.checkInput(array)
@@ -16,6 +18,7 @@ export class MerkleTree {
         this.generateTree(array)
 
     }
+
 
     public verify(proof: string[], leaf: string, rootHash: string, index: number) {
 
@@ -36,9 +39,13 @@ export class MerkleTree {
 
     }
 
+
     public getRootHash(): string {
+
         return this.hashes.filter((e: IMerkleHashes) => e.level === this.hashes[this.hashes.length - 1].level)[0].hashes[0]
+
     }
+
 
     public getProofElements(investigatedEntryIndex: number): string[] {
 
@@ -49,11 +56,9 @@ export class MerkleTree {
 
         while (level < levels) {
 
-            relevantIndex = (level === 0) ? investigatedEntryIndex : this.getRelevantIndex(relevantIndex, level)
+            relevantIndex = (level === 0) ? investigatedEntryIndex : this.getRelevantIndex(relevantIndex)
 
             let isLeftNode = (relevantIndex % 2 === 0)
-
-            console.log(`getting proof element for level ${level} index: ${investigatedEntryIndex} - relevantIndex: ${relevantIndex}`)
 
             if (isLeftNode) {
                 proofElements.push(this.hashes.filter((e: IMerkleHashes) => e.level === level)[0].hashes[relevantIndex + 1]) // same level proof comes from right
@@ -61,26 +66,30 @@ export class MerkleTree {
                 proofElements.push(this.hashes.filter((e: IMerkleHashes) => e.level === level)[0].hashes[relevantIndex - 1]) // same level proof comes from left
             }
 
-
             level++
 
         }
 
         return proofElements
+
     }
 
 
     public getHashes(): IMerkleHashes[] {
+
         return this.hashes
+
     }
 
-    public getRelevantIndex(previousIndex: number, level: number): number {
+
+    public getRelevantIndex(previousIndex: number): number {
 
         return Math.floor(previousIndex / 2)
 
     }
 
     private generateTree(array: any[]) {
+
         let level = 0
         let itemsToBeHashed = array
 
@@ -88,9 +97,12 @@ export class MerkleTree {
             itemsToBeHashed = this.addLevel(level, itemsToBeHashed)
             level++
         }
+
     }
 
+
     private addLevel(level: number, array: any[]): string[] {
+
         let hashesOnThisLevel: string[] = []
 
         if (level === 0) {
@@ -112,10 +124,13 @@ export class MerkleTree {
 
     }
 
+
     private checkInput(array: any[]) {
+
         if (!(Helper.isPowerOfTwo(array.length) && array.length >= 4)) {
             throw new Error(`This module only accepts x to the power of 2 items - and at least 4 items.`)
         }
+
     }
 
 }
