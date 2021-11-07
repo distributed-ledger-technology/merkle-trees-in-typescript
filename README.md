@@ -2,7 +2,7 @@
 
 Merkle Trees became especially famous in the context of Bitcoin's Simple Payment Verification - see chapter 8 in the [Bitcoin Whitepaper](https://bitcoin.org/bitcoin.pdf).  
 
-In general you can use them to proof that a specific element is available at a specific index within an array (block, ...).  
+In general you can use Merkle Trees to proof that a specific element is available at a specific index within an array (block, ...) - without the need to load the elements themselves.  
 
 
 ## Usage Example
