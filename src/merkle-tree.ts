@@ -83,14 +83,20 @@ export class MerkleTree {
         return this.hashes.filter((e: IMerkleHashes) => e.level === 2)[0].hashes[0]
     }
 
-    public getProof(investigatedEntryIndex: number): string[] {
+    public getProofElements(investigatedEntryIndex: number): string[] {
         let level = 0
         let levels = this.hashes[this.hashes.length - 1].level
+        let proofElements: string[] = []
 
         console.log(this.hashes)
         console.log(`levels: ${levels}`)
 
-        return [this.hashes.filter((e: IMerkleHashes) => e.level === 0)[0].hashes[1], this.hashes.filter((e: IMerkleHashes) => e.level === 1)[0].hashes[1]]
+        while (level < levels) {
+            proofElements.push(this.hashes.filter((e: IMerkleHashes) => e.level === level)[investigatedEntryIndex].hashes[1])
+            level++
+        }
+
+        return proofElements
     }
 
     private checkInput(array: any[]) {

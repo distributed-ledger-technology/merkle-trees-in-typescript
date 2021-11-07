@@ -1,11 +1,12 @@
-import { MerkleTree, Helper } from "https://deno.land/x/merkletrees/mod.ts"
+// import { MerkleTree, Helper } from "https://deno.land/x/merkletrees/mod.ts"
+import { MerkleTree, Helper } from "./mod.ts"
 
 const exampleArray = ["dog", "horse", "cow", "chicken"]
 
 const merkleTree = new MerkleTree(exampleArray)
 
 const investigatedEntry = "dog"
-const proof = merkleTree.getProof(exampleArray.indexOf(investigatedEntry))
+const proof = merkleTree.getProofElements(exampleArray.indexOf(investigatedEntry))
 const investigatedEntryHashed = Helper.sha256(investigatedEntry)
 const rootHash = merkleTree.getRootHash()
 const isValid = merkleTree.verify(proof, investigatedEntryHashed, rootHash, exampleArray.indexOf(investigatedEntry))
