@@ -1,16 +1,3 @@
-# Merkle Tree 
-
-You can use this to proof a specific element is available at a specific index within an array in an efficient way.
-
-## Usage Example
-
-```sh
-
-deno run https://deno.land/x/merkletree/usage-example.ts
-
-```
-
-```ts
 import { MerkleTree, Helper } from "./mod.ts"
 
 const exampleArray = ["dog", "horse", "cow", "chicken"]
@@ -28,4 +15,3 @@ if (isValid) {
 } else {
     console.log(`${investigatedEntry} is not in the array`)
 }
-```
