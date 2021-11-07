@@ -1,6 +1,9 @@
 # Merkle Tree 
 
-You can use this to proof a specific element is available at a specific index within an array in an efficient way.
+Merkle Trees became especially famous in the context of Bitcoin's Simple Payment Verification - see chapter 8 in the [Bitcoin Whitepaper](https://bitcoin.org/bitcoin.pdf).  
+
+In general you can use them to proof that a specific element is available at a specific index within an array (block, ...).  
+
 
 ## Usage Example
 
