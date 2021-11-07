@@ -84,11 +84,13 @@ export class MerkleTree {
     }
 
     public getProof(investigatedEntryIndex: number): string[] {
-        if (investigatedEntryIndex === 0) {
-            return ["fd62862b6dc213bee77c2badd6311528253c6cb3107e03c16051aa15584eca1c", "a12b2f7a5ddb20963c22654f6b22a6955c9956a20c76a0e8f169a437aafb4c98"]
-        } else {
-            return ["fd62862b6dc213bee77c2badd6311528253c6cb3107e03c16051aa15584eca1c", "a12b2f7a5ddb20963c22654f6b22a6955c9956a20c76a0e8f169a437aafb4c98"]
-        }
+        let level = 0
+        let levels = this.hashes[this.hashes.length - 1].level
+
+        console.log(this.hashes)
+        console.log(`levels: ${levels}`)
+
+        return [this.hashes.filter((e: IMerkleHashes) => e.level === 0)[0].hashes[1], this.hashes.filter((e: IMerkleHashes) => e.level === 1)[0].hashes[1]]
     }
 
     private checkInput(array: any[]) {

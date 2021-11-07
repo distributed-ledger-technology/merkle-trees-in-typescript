@@ -1,25 +1,25 @@
 import { assertEquals } from "https://deno.land/std@0.86.0/testing/asserts.ts"
 import { MerkleTree, Helper } from "../mod.ts";
 
-Deno.test("should return valid as the investigated entry is in array", async () => {
+// Deno.test("should return valid as the investigated entry is in array", async () => {
 
-    // const exampleArray = ["dog", "horse", "cow", "chicken", "rabbit", "bird", "bee", "me"]
-    const exampleArray = ["dog", "horse", "cow", "chicken"]
+//     // const exampleArray = ["dog", "horse", "cow", "chicken", "rabbit", "bird", "bee", "me"]
+//     const exampleArray = ["dog", "horse", "cow", "chicken"]
 
-    const merkleTree = new MerkleTree(exampleArray)
+//     const merkleTree = new MerkleTree(exampleArray)
 
-    const investigatedEntry = "dog"
-    const proof = merkleTree.getProof(exampleArray.indexOf(investigatedEntry))
-    const investigatedEntryHashed = Helper.sha256(investigatedEntry)
-    const rootHash = merkleTree.getRootHash()
-    const isValid = merkleTree.verify(proof, investigatedEntryHashed, rootHash, exampleArray.indexOf(investigatedEntry))
+//     const investigatedEntry = "dog"
+//     const proof = merkleTree.getProof(exampleArray.indexOf(investigatedEntry))
+//     const investigatedEntryHashed = Helper.sha256(investigatedEntry)
+//     const rootHash = merkleTree.getRootHash()
+//     const isValid = merkleTree.verify(proof, investigatedEntryHashed, rootHash, exampleArray.indexOf(investigatedEntry))
 
-    if (isValid) {
-        console.log(`we can be pretty sure that ${investigatedEntry} is in the array at index: ${exampleArray.indexOf(investigatedEntry)}`)
-    } else {
-        console.log(`${investigatedEntry} is not in the array`)
-    }
-})
+//     if (isValid) {
+//         console.log(`we can be pretty sure that ${investigatedEntry} is in the array at index: ${exampleArray.indexOf(investigatedEntry)}`)
+//     } else {
+//         console.log(`${investigatedEntry} is not in the array`)
+//     }
+// })
 
 Deno.test("should return the correct proof for an element at a specific index", async () => {
 
