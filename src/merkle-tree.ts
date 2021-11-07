@@ -90,11 +90,49 @@ export class MerkleTree {
 
         console.log(this.hashes)
         console.log(`levels: ${levels}`)
+        console.log(`investigatedEntryIndex: ${investigatedEntryIndex}`)
+
+        let isLeftNode = (investigatedEntryIndex % 2 === 0)
+
+        if (isLeftNode) {
+            proofElements.push(this.hashes.filter((e: IMerkleHashes) => e.level === level)[0].hashes[investigatedEntryIndex + 1]) // same level proof comes from right
+        } else {
+            proofElements.push(this.hashes.filter((e: IMerkleHashes) => e.level === level)[0].hashes[investigatedEntryIndex - 1]) // same level proof comes from left
+        }
+
+        level++
+
+        let relevantIndexForBranches = Math.floor(investigatedEntryIndex / (level + 1))
+
+        // if (investigatedEntryIndex < 2) {
+        //     relevantIndexForBranches = 0
+        // } else {
+        //     relevantIndexForBranches = 1
+        // }
 
         while (level < levels) {
-            proofElements.push(this.hashes.filter((e: IMerkleHashes) => e.level === level)[investigatedEntryIndex].hashes[1])
+            console.log(`getting proof element for level ${level}`)
+            let isLeftNode = (relevantIndexForBranches % 2 === 0)
+
+            if (isLeftNode) {
+                proofElements.push(this.hashes.filter((e: IMerkleHashes) => e.level === level)[0].hashes[relevantIndexForBranches + 1]) // same level proof comes from right
+            } else {
+                proofElements.push(this.hashes.filter((e: IMerkleHashes) => e.level === level)[0].hashes[relevantIndexForBranches - 1]) // same level proof comes from left
+
+            }
             level++
         }
+
+        // while (level < levels) {
+        //     if (relevantIndex % 2 === 0) {
+        //         proofElements.push(this.hashes.filter((e: IMerkleHashes) => e.level === level)[0].hashes[1])
+        //         // proofElements.push(this.hashes.filter((e: IMerkleHashes) => e.level === level)[investigatedEntryIndex].hashes[1])
+        //     } else {
+        //         proofElements.push(this.hashes.filter((e: IMerkleHashes) => e.level === level)[0].hashes[0])
+        //         relevantIndex = 0
+        //     }
+        //     level++
+        // }
 
         return proofElements
     }
