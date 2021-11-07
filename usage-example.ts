@@ -1,5 +1,5 @@
-// import { MerkleTree, Helper } from "https://deno.land/x/merkletrees/mod.ts"
-import { MerkleTree, Helper } from "./mod.ts"
+import { MerkleTree, Helper } from "https://deno.land/x/merkletrees/mod.ts"
+// import { MerkleTree, Helper } from "./mod.ts"
 
 const exampleArray = ["dog", "horse", "cow", "chicken"]
 
