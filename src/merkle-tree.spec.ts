@@ -1,6 +1,5 @@
 import { assertEquals } from "https://deno.land/std@0.86.0/testing/asserts.ts"
-import { Helper } from "./helper.ts";
-import { MerkleTree } from "./merkle-tree.ts";
+import { MerkleTree, Helper } from "../mod.ts";
 
 Deno.test("should return valid as the investigated entry is in array", async () => {
 
@@ -22,15 +21,15 @@ Deno.test("should return valid as the investigated entry is in array", async () 
     }
 })
 
-// Deno.test("should return the correct proof for an element at a specific index", async () => {
+Deno.test("should return the correct proof for an element at a specific index", async () => {
 
-//     const exampleArray = ["dog", "horse", "cow", "chicken"]
-//     const merkleTree = new MerkleTree(exampleArray)
+    const exampleArray = ["dog", "horse", "cow", "chicken"]
+    const merkleTree = new MerkleTree(exampleArray)
 
-//     const proof = merkleTree.getProof(exampleArray.indexOf("dog"))
+    const proof = merkleTree.getProof(exampleArray.indexOf("dog"))
 
-//     const expectedProof = ["fd62862b6dc213bee77c2badd6311528253c6cb3107e03c16051aa15584eca1c", "a12b2f7a5ddb20963c22654f6b22a6955c9956a20c76a0e8f169a437aafb4c98"]
+    const expectedProof = ["fd62862b6dc213bee77c2badd6311528253c6cb3107e03c16051aa15584eca1c", "a12b2f7a5ddb20963c22654f6b22a6955c9956a20c76a0e8f169a437aafb4c98"]
 
-//     assertEquals(proof, expectedProof)
+    assertEquals(proof, expectedProof)
 
-// })
+})

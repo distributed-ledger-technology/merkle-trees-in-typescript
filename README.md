@@ -6,7 +6,7 @@ You can use this to proof a specific element is available at a specific index wi
 
 ```sh
 
-deno run https://deno.land/x/merkletree/usage-example.ts
+deno run https://deno.land/x/merkletrees/usage-example.ts
 
 ```
 
