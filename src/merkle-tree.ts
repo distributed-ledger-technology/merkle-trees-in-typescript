@@ -91,34 +91,31 @@ export class MerkleTree {
     private generateTree(array: any[]) {
 
         let level = 0
-        let itemsToBeHashed = array
+        let itemsOnThisLevel = array
 
-        while (itemsToBeHashed.length > 1) {
-            itemsToBeHashed = this.addLevel(level, itemsToBeHashed)
+        while (itemsOnThisLevel.length > 1) {
+            itemsOnThisLevel = this.getHashesForLevel(level, itemsOnThisLevel)
+
+            this.hashes.push({ level, hashes: itemsOnThisLevel })
+
             level++
         }
 
     }
 
 
-    private addLevel(level: number, array: any[]): string[] {
+    private getHashesForLevel(level: number, array: any[]): string[] {
 
         let hashesOnThisLevel: string[] = []
 
-        if (level === 0) {
-            for (const entry of array) {
-                hashesOnThisLevel.push(Helper.sha256(entry))
-            }
-        } else {
-            for (let i = 0; i <= array.length; i++) {
-                if (i % 2 === 0 && i > 0) {
-                    const hash: string = Helper.sha256(`${array[i - 2]}${array[i - 1]}`)
-                    hashesOnThisLevel.push(hash)
-                }
+        for (let i = 0; i <= array.length; i++) {
+            if (level === 0) {
+                hashesOnThisLevel.push(Helper.sha256(array[i]))
+            } else if (i % 2 === 0 && i > 0) {
+                const hash: string = Helper.sha256(`${array[i - 2]}${array[i - 1]}`)
+                hashesOnThisLevel.push(hash)
             }
         }
-
-        this.hashes.push({ level, hashes: hashesOnThisLevel })
 
         return hashesOnThisLevel
 
