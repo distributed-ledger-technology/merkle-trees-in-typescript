@@ -32,3 +32,15 @@ if (isValid) {
 } 
 
 ```
+
+## Unit Tests / Executable Specifications
+
+You can execute the [unit tests](https://github.com/distributed-ledger-technology/merkle-trees/blob/main/src/merkle-tree.spec.ts) via:  
+  
+
+```sh
+
+deno test https://deno.land/x/merkletrees/src/merkle-tree.spec.ts
+
+```
+
