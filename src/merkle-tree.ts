@@ -1,4 +1,4 @@
-import { Helper } from "./helper.ts";
+import { Helper } from "./helper.ts"
 
 
 export interface IMerkleHashes {

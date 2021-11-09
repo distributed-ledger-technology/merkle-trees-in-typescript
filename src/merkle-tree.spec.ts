@@ -1,5 +1,5 @@
 import { assertEquals } from "https://deno.land/std@0.86.0/testing/asserts.ts"
-import { MerkleTree, Helper } from "../mod.ts";
+import { MerkleTree, Helper } from "../mod.ts"
 
 const exampleArray = ["dog", "horse", "cow", "chicken", "rabbit", "bird", "bee", "me"]
 
