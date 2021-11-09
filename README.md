@@ -1,4 +1,4 @@
-# Merkle Tree 
+# Merkle Trees 
 
 Merkle Trees became especially famous in the context of Bitcoin's Simple Payment Verification - see chapter 8 in the [Bitcoin Whitepaper](https://bitcoin.org/bitcoin.pdf).  
 
