@@ -4,6 +4,8 @@ Merkle Trees became especially famous in the context of Bitcoin's Simple Payment
 
 In general you can use Merkle Trees to proof / validate that a specific element is available at a specific index within an array (block, ...) - without the need to load the elements themselves.  
 
+Merkle trees are built up by hashing the neighbour element up the ladder - diagram follows :) 
+
 
 ## Usage Example
 
