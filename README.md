@@ -51,5 +51,7 @@ Merkle trees are built up by hashing the neighbour element up the ladder. In cas
 
 ## Explaining the Role of Merkle Trees in Bitcoin's Simple Payment Verification
 It is possible to verify payments without running a full network node. A user only needs to keep a copy of the block headers of the longest proof-of-work chain, which he can get by querying network nodes until he's convinced he has the longest chain, and obtain the Merkle branch linking the transaction to the block it's timestamped in. He can't check the transaction for himself, but by linking it to a place in the chain, he can see that a network node has accepted it,
-and blocks added after it further confirm the network has accepted it.
+and blocks added after it further confirm the network has accepted it. 
+
+Check the [Bitcoin Whitepaper](https://bitcoin.org/bitcoin.pdf) and [this video](https://www.youtube.com/watch?v=Lx9zgZCMqXE) to explore the whole game. 
 
