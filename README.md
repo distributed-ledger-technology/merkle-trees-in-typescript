@@ -1,11 +1,8 @@
 # Merkle Trees 
 
-Merkle Trees became especially famous in the context of Bitcoin's Simple Payment Verification - see chapter 8 in the [Bitcoin Whitepaper](https://bitcoin.org/bitcoin.pdf).  
+Merkle Trees are data structures which became especially famous in the context of Bitcoin's Simple Payment Verification - see chapter 8 in the [Bitcoin Whitepaper](https://bitcoin.org/bitcoin.pdf).  
 
-In general you can use Merkle Trees to proof / validate that a specific element is available at a specific index within an array (block, ...) - without the need to load the elements themselves.  
-
-Merkle trees are built up by hashing the neighbour element up the ladder - diagram follows :) 
-
+In general you can use Merkle Trees to proof / validate that a specific element is available at a specific index within an array (block, ...) - without the need to load the elements themselves.   
 
 ## Usage Example
 
@@ -45,4 +42,9 @@ You can execute the [unit tests](https://github.com/distributed-ledger-technolog
 deno test https://deno.land/x/merkletrees/src/merkle-tree.spec.ts
 
 ```
+
+## Explaining Merkle Trees
+Merkle trees are built up by hashing the neighbour element up the ladder. In case of questions feel free to raise an issue.
+
+![diagram](https://user-images.githubusercontent.com/43786652/148436374-ca26db28-ddca-4390-a89c-599da1054e85.jpg)
 
