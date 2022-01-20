@@ -32,9 +32,11 @@ if (isValid) {
 
 ```
 
+For more sophisticated examples please check the [unit tests](https://github.com/distributed-ledger-technology/merkle-trees/blob/main/src/merkle-tree.spec.ts).
+
 ## Unit Tests / Executable Specifications
 
-You can execute the [unit tests](https://github.com/distributed-ledger-technology/merkle-trees/blob/main/src/merkle-tree.spec.ts) via:  
+You can also execute the [unit tests](https://github.com/distributed-ledger-technology/merkle-trees/blob/main/src/merkle-tree.spec.ts) via:  
   
 
 ```sh
