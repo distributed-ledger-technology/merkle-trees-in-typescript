@@ -10,26 +10,37 @@ export class MerkleTree {
 
     private hashes: IMerkleHashes[] = []
 
+    private hashFunction: any | undefined
 
-    public constructor(array: any[]) {
+    public constructor(array: any[], hashFunction?: any) {
 
         this.checkInput(array)
+
+        this.hashFunction = hashFunction
 
         this.generateTree(array)
 
     }
 
 
-    public verify(proof: string[], leaf: string, rootHash: string, index: number) {
+    public verify(proof: string[] | number[], leaf: string | number, rootHash: string | number, index: number) {
 
         let hash = leaf
 
         for (let i = 0; i < proof.length; i++) {
 
             if (index % 2 === 0) {
-                hash = Helper.sha256(`${hash}${proof[i]}`)
+                if (this.hashFunction === undefined) {
+                    hash = Helper.sha256(`${hash}${proof[i]}`)
+                } else {
+                    hash = this.hashFunction(`${hash}${proof[i]}`)
+                }
             } else {
-                hash = Helper.sha256(`${proof[i]}${hash}`)
+                if (this.hashFunction === undefined) {
+                    hash = Helper.sha256(`${proof[i]}${hash}`)
+                } else {
+                    hash = this.hashFunction(`${proof[i]}${hash}`)
+                }
             }
 
             index = Math.floor(index / 2)
@@ -95,7 +106,6 @@ export class MerkleTree {
 
         while (itemsOnThisLevel.length > 1) {
             itemsOnThisLevel = this.getHashesForLevel(level, itemsOnThisLevel)
-
             this.hashes.push({ level, hashes: itemsOnThisLevel })
 
             level++
@@ -110,9 +120,20 @@ export class MerkleTree {
 
         for (let i = 0; i <= array.length; i++) {
             if (level === 0) {
-                hashesOnThisLevel.push(Helper.sha256(array[i]))
+                let hash
+                if (this.hashFunction === undefined) {
+                    hash = Helper.sha256(array[i])
+                } else {
+                    hash = this.hashFunction(array[i])
+                }
+                hashesOnThisLevel.push(hash)
             } else if (i % 2 === 0 && i > 0) {
-                const hash: string = Helper.sha256(`${array[i - 2]}${array[i - 1]}`)
+                let hash: string = Helper.sha256(`${array[i - 2]}${array[i - 1]}`)
+                if (this.hashFunction === undefined) {
+                    hash = Helper.sha256(`${array[i - 2]}${array[i - 1]}`)
+                } else {
+                    hash = this.hashFunction(`${array[i - 2]}${array[i - 1]}`)
+                }
                 hashesOnThisLevel.push(hash)
             }
         }
