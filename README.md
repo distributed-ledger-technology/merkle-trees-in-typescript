@@ -5,19 +5,14 @@ Merkle Trees are data structures which became especially famous in the context o
 In general you can use Merkle Trees to proof / validate that a specific element is available at a specific index within an array (block, ...) - without the need to load the elements themselves.   
 
 ## Usage Example
-
 ```sh
-
 deno run https://deno.land/x/merkletrees/usage-example.ts
-
 ```
 
 ```ts  
-
 import { MerkleTree, Helper } from "https://deno.land/x/merkletrees/mod.ts"
 
 const exampleArray = ["dog", "horse", "cow", "chicken"]
-
 const merkleTree = new MerkleTree(exampleArray)
 
 const investigatedEntry = "dog"
@@ -29,20 +24,15 @@ const isValid = merkleTree.verify(proofElements, investigatedEntryHashed, rootHa
 if (isValid) {
     console.log(`we can be pretty sure that ${investigatedEntry} is in the array at index: ${exampleArray.indexOf(investigatedEntry)}`)
 } 
-
 ```
 
 For more sophisticated examples please check the [unit tests](https://github.com/distributed-ledger-technology/merkle-trees/blob/main/src/merkle-tree.spec.ts).
 
 ## Unit Tests / Executable Specifications
-
 You can also execute the [unit tests](https://github.com/distributed-ledger-technology/merkle-trees/blob/main/src/merkle-tree.spec.ts) via:  
   
-
 ```sh
-
 deno test https://deno.land/x/merkletrees/src/merkle-tree.spec.ts
-
 ```
 
 ## Explaining Merkle Trees in General
@@ -57,3 +47,8 @@ and blocks added after it further confirm the network has accepted it.
 
 Check the [Bitcoin Whitepaper](https://bitcoin.org/bitcoin.pdf) and [this video](https://www.youtube.com/watch?v=Lx9zgZCMqXE) to explore the whole game. 
 
+## Donations
+Thanks to [Freedom Cash](https://FreedomCash.org), we are already free.  
+If you want to donate, you might consider donating to the [otherparty.co.uk](https://www.otherparty.co.uk/donate-crypto-the-other-party) to ensure people do not need to donate to victims but rather donate successfully to problem solvers.   
+  
+![direct-democracy](https://github.com/michael-spengler/sleep/assets/145258627/fe97b7da-62b4-4cf6-9be0-7b03b2f3095a)
